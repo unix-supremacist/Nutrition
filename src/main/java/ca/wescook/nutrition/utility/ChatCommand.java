@@ -8,7 +8,7 @@ import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.ChatComponentText;
 import org.apache.commons.lang3.math.NumberUtils;
 
 public class ChatCommand extends CommandBase {
@@ -22,8 +22,8 @@ public class ChatCommand extends CommandBase {
 		return "/nutrition <get/set> <nutrient> <value>";
 	}
 
-	@Override
-	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
+    @Override
+    public void processCommand(ICommandSender sender, String[] args) throws CommandException{
 		if (sender instanceof EntityPlayer) {
 			// Which command to execute
 			if (args.length == 0 || args[0].equals("help"))
@@ -36,13 +36,13 @@ public class ChatCommand extends CommandBase {
 	}
 
 	private void commandHelp(ICommandSender sender) {
-		sender.addChatMessage(new TextComponentString("/nutrition <get/set> <nutrient> <value>"));
+		sender.addChatMessage(new ChatComponentText("/nutrition <get/set> <nutrient> <value>"));
 	}
 
 	private void commandGetNutrition(ICommandSender sender, String[] args) {
 		// If missing parameter, offer help
 		if (args.length != 2) {
-			sender.addChatMessage(new TextComponentString("Invalid format.  /nutrition get <nutrient>"));
+			sender.addChatMessage(new ChatComponentText("Invalid format.  /nutrition get <nutrient>"));
 			return;
 		}
 
@@ -51,16 +51,16 @@ public class ChatCommand extends CommandBase {
 		Nutrient nutrient = NutrientList.getByName(args[1]);
 		if (nutrient != null) {
 			Float nutrientValue = player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).get(nutrient);
-			sender.addChatMessage(new TextComponentString(nutrient.name + ": " + String.format("%.2f", nutrientValue) + "%"));
+			sender.addChatMessage(new ChatComponentText(nutrient.name + ": " + String.format("%.2f", nutrientValue) + "%"));
 		}
 		else // Write error message
-			sender.addChatMessage(new TextComponentString("'" + args[1] + "' is not a valid nutrient."));
+			sender.addChatMessage(new ChatComponentText("'" + args[1] + "' is not a valid nutrient."));
 	}
 
 	private void commandSetNutrition(ICommandSender sender, String[] args) {
 		// If missing parameter, offer help
 		if (args.length != 3) {
-			sender.addChatMessage(new TextComponentString("Invalid format.  /nutrition set <nutrient> <value>"));
+			sender.addChatMessage(new ChatComponentText("Invalid format.  /nutrition set <nutrient> <value>"));
 			return;
 		}
 
@@ -69,13 +69,13 @@ public class ChatCommand extends CommandBase {
 		if (NumberUtils.isNumber(args[2]))
 			newValue = Float.parseFloat(args[2]);
 		else {
-			sender.addChatMessage(new TextComponentString("Value is not a number."));
+			sender.addChatMessage(new ChatComponentText("Value is not a number."));
 			return;
 		}
 
 		// Range check (don't sue me Oracle)
 		if (!(newValue >= 0 && newValue <= 100)) {
-			sender.addChatMessage(new TextComponentString("Value is not between 0 and 100."));
+			sender.addChatMessage(new ChatComponentText("Value is not between 0 and 100."));
 			return;
 		}
 
@@ -85,9 +85,9 @@ public class ChatCommand extends CommandBase {
 
 		if (nutrient != null) {
 			player.getCapability(CapProvider.NUTRITION_CAPABILITY, null).set(nutrient, newValue, true);
-			sender.addChatMessage(new TextComponentString(nutrient.name + " updated!"));
+			sender.addChatMessage(new ChatComponentText(nutrient.name + " updated!"));
 		}
 		else // Write error message
-			sender.addChatMessage(new TextComponentString("'" + args[1] + "' is not a valid nutrient."));
+			sender.addChatMessage(new ChatComponentText("'" + args[1] + "' is not a valid nutrient."));
 	}
 }

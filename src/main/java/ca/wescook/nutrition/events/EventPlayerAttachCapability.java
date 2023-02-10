@@ -6,7 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventPlayerAttachCapability {
 	@SubscribeEvent
@@ -18,7 +18,7 @@ public class EventPlayerAttachCapability {
 			return;
 
 		// Only run on server
-		if (entity.getEntityWorld().isRemote)
+		if (entity.worldObj.isRemote)
 			return;
 
 		// Attach capability to player

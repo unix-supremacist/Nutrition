@@ -2,7 +2,7 @@ package ca.wescook.nutrition.potions;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 import java.util.UUID;
 

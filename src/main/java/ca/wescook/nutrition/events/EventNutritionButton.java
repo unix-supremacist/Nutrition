@@ -12,9 +12,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.GuiScreenEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class EventNutritionButton {
 	private GuiButton buttonNutrition;
@@ -24,7 +24,7 @@ public class EventNutritionButton {
 	@SideOnly(Side.CLIENT)
 	public void guiOpen(GuiScreenEvent.InitGuiEvent.Post event) {
 		// If any inventory except player inventory is opened, get out
-		GuiScreen gui = event.getGui();
+		GuiScreen gui = event.gui;
 		if (!(gui instanceof GuiInventory))
 			return;
 
@@ -34,14 +34,14 @@ public class EventNutritionButton {
 		int yPosition = ((GuiInventory) gui).guiTop + 61;
 
 		// Create button
-		event.getButtonList().add(this.buttonNutrition = new GuiButtonIcon(NUTRITION_ID, xPosition, yPosition, 18, 17, new ItemStack(Items.CARROT)));
+		event.buttonList.add(this.buttonNutrition = new GuiButtonIcon(NUTRITION_ID, xPosition, yPosition, 18, 17, new ItemStack(Items.carrot)));
 	}
 
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void guiButtonClick(GuiScreenEvent.ActionPerformedEvent.Post event) {
 		// Only continue if nutrition button is pressed
-		if (!event.getButton().equals(buttonNutrition))
+		if (!event.button.equals(buttonNutrition))
 			return;
 
 		// Get data

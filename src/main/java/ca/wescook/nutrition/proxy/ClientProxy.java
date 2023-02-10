@@ -7,8 +7,8 @@ import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.utility.Config;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 
 import java.util.Map;
 

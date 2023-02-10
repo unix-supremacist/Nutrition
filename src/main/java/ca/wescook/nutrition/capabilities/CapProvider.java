@@ -4,9 +4,9 @@ import jline.internal.Nullable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.util.EnumFacing;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.CapabilityInject;
-import net.minecraftforge.common.capabilities.ICapabilitySerializable;
+import cpw.mods.common.capabilities.Capability;
+import cpw.mods.common.capabilities.CapabilityInject;
+import cpw.mods.common.capabilities.ICapabilitySerializable;
 
 // Creates and holds default implementation.  Offers Capability access, and optionally handles serialization.
 public class CapProvider implements ICapabilitySerializable<NBTBase> {

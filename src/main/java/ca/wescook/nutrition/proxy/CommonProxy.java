@@ -15,11 +15,11 @@ import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.potions.ModPotions;
 import ca.wescook.nutrition.utility.Config;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.capabilities.CapabilityManager;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.capabilities.CapabilityManager;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 
 public class CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) {

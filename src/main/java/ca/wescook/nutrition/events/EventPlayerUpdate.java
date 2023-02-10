@@ -5,8 +5,8 @@ import ca.wescook.nutrition.effects.EffectsManager;
 import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.utility.Config;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
 
 import java.util.HashMap;
 import java.util.Map;

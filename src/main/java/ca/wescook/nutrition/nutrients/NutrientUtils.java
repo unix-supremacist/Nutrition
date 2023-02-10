@@ -47,8 +47,8 @@ public class NutrientUtils {
 		// Base food value
 		int foodValue = 0;
 		if (item instanceof ItemFood)
-			foodValue = ((ItemFood) item).getHealAmount(itemStack); // Number of half-drumsticks food heals
-		else if (item instanceof ItemBlock || item instanceof ItemBlockSpecial) // Cake, most likely
+			foodValue = ((ItemFood) item).func_150905_g(itemStack); // Number of half-drumsticks food heals
+		else if (item instanceof ItemBlock || item instanceof ItemReed) // Cake, most likely
 			foodValue = 2; // Hardcoded value from vanilla
 
 		// Apply multipliers
@@ -71,11 +71,11 @@ public class NutrientUtils {
 			return true;
 
 		// Cake - Vanilla
-		if (item instanceof ItemBlock && ((ItemBlock) item).getBlock() instanceof BlockCake)
+		if (item instanceof ItemBlock && ((ItemBlock) item).getBlock() instanceof BlockCake) //there is no get block function we need the private field of item reed field_150935_a
 			return true;
 
 		// Cake - Modded
-		if (item instanceof ItemBlockSpecial && ((ItemBlockSpecial) item).getBlock() instanceof BlockCake)
+		if (item instanceof ItemReed && ((ItemReed) item).getBlock() instanceof BlockCake) //there is no get block function we need the private field of item reed field_150935_a
 			return true;
 
 		return false;
